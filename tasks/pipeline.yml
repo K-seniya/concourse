@@ -1,0 +1,19 @@
+resources:
+  - name: spring-boot-concourse
+    type: git
+    check_every: 10s
+    source:
+      branch: master
+      uri:         ((publishing-outputs-gist-uri))
+      private_key: ((publishing-outputs-private-key))
+
+jobs:
+- name: build
+  public: true
+  plan:
+  - get: spring-boot-concourse
+    trigger: true
+  - task: Build project
+    file: spring-boot-concourse/tasks/build.yml
+  - task: Deploy artifact
+    file: spring-boot-concourse/tasks/deploy.yml
