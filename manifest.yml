@@ -3,4 +3,4 @@ applications:
 - name: cf-demo-spring-boot
   instances: 1
   random-route: true
-  path: .target/concourse-0.0.1-SNAPSHOT.jar
+  path: target/concourse-0.0.1-SNAPSHOT.jar
